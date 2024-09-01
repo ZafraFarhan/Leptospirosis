@@ -85,7 +85,7 @@ def run():
     st.image(img1, use_column_width=True)
 
 
-    st.write("Leptospirosis Globally")
+    st.markdown("# Leptospirosis Globally")
     col1, col2 = st.columns(2)
 
     with col1:
@@ -182,58 +182,7 @@ def run():
 
     #################################################################################################
 
-    st.write("Leptospirosis in Sri Lanka")
-    col1, col2 = st.columns(2)
-
-    with col1:
-        region_display = ('Ampara', 'Anuradhapura', 'Badulla',
-       'Batticaloa', 'Colombo', 'Galle', 'Gampaha',
-       'Hambantota', 'Jaffna', 'Kalmunai',
-       'Kalutara', 'Kandy', 'Kegalle',
-       'Kilinochchi', 'Kurunegala', 'Mannar',
-       'Matale', 'Matara', 'Monaragala',
-       'Mullaitivu', 'Nuwara Eliya', 'Polonnaruwa',
-       'Puttalam', 'Ratnapura', 'Trincomalee',
-       'Vavuniya')  
-        region_options = list(range(len(region_display)))
-        region = st.selectbox("Region", region_options, format_func=lambda x: region_display[x], key="sl_region")
-
-    with col2:
-        year_displaysl = ('2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023')
-        year_optionssl = list(range(len(year_displaysl)))
-        yearsl = st.selectbox("Year", year_optionssl, format_func=lambda x: year_displaysl[x], key="sl_year")
-
-    if st.button("Sri Lanka Prediction", key="sl_button"):
-        le = LabelEncoder()
-        le.fit(region_display)  
-        selected_region_encoded = le.transform([region_display[region]])[0]
-
-        num_features = 27  
-        feature_vector = np.zeros(num_features)
-
-        feature_order = ['Ampara', 'Anuradhapura', 'Badulla',
-       'Batticaloa', 'Colombo', 'Galle', 'Gampaha',
-       'Hambantota', 'Jaffna', 'Kalmunai',
-       'Kalutara', 'Kandy', 'Kegalle',
-       'Kilinochchi', 'Kurunegala', 'Mannar',
-       'Matale', 'Matara', 'Monaragala',
-       'Mullaitivu', 'Nuwara Eliya', 'Polonnaruwa',
-       'Puttalam', 'Ratnapura', 'Trincomalee',
-       'Vavuniya','Year']
-        region_index = feature_order.index(region_display[region])
-        feature_vector[region_index] = selected_region_encoded
-        
-        # Set the year in the correct position
-        year_index = feature_order.index('Year')
-        feature_vector[year_index] = int(yearsl)  
-
-        # Perform the prediction
-        prediction = sl_cases.predict([feature_vector])
-        st.write(f"Prediction result for {region_display[region]} in {year_displaysl[yearsl]}: {prediction[0]}")
-
-    #################################################################################################
-
-    st.write("Leptospirosis in the USA")
+    st.markdown("# Leptospirosis in the USA")
     col1, col2 = st.columns(2)
 
     with col1:
@@ -288,5 +237,55 @@ def run():
         st.write(f"Prediction result for {uregion_display[uregion]} in {year_displaysu[yearsu]}: {prediction[0]}")
 
   
+    #################################################################################################
+
+    st.markdown("# Leptospirosis in Sri Lanka")
+    col1, col2 = st.columns(2)
+
+    with col1:
+        region_display = ('Ampara', 'Anuradhapura', 'Badulla',
+       'Batticaloa', 'Colombo', 'Galle', 'Gampaha',
+       'Hambantota', 'Jaffna', 'Kalmunai',
+       'Kalutara', 'Kandy', 'Kegalle',
+       'Kilinochchi', 'Kurunegala', 'Mannar',
+       'Matale', 'Matara', 'Monaragala',
+       'Mullaitivu', 'Nuwara Eliya', 'Polonnaruwa',
+       'Puttalam', 'Ratnapura', 'Trincomalee',
+       'Vavuniya')  
+        region_options = list(range(len(region_display)))
+        region = st.selectbox("Region", region_options, format_func=lambda x: region_display[x], key="sl_region")
+
+    with col2:
+        year_displaysl = ('2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023')
+        year_optionssl = list(range(len(year_displaysl)))
+        yearsl = st.selectbox("Year", year_optionssl, format_func=lambda x: year_displaysl[x], key="sl_year")
+
+    if st.button("Sri Lanka Prediction", key="sl_button"):
+        le = LabelEncoder()
+        le.fit(region_display)  
+        selected_region_encoded = le.transform([region_display[region]])[0]
+
+        num_features = 27  
+        feature_vector = np.zeros(num_features)
+
+        feature_order = ['Ampara', 'Anuradhapura', 'Badulla',
+       'Batticaloa', 'Colombo', 'Galle', 'Gampaha',
+       'Hambantota', 'Jaffna', 'Kalmunai',
+       'Kalutara', 'Kandy', 'Kegalle',
+       'Kilinochchi', 'Kurunegala', 'Mannar',
+       'Matale', 'Matara', 'Monaragala',
+       'Mullaitivu', 'Nuwara Eliya', 'Polonnaruwa',
+       'Puttalam', 'Ratnapura', 'Trincomalee',
+       'Vavuniya','Year']
+        region_index = feature_order.index(region_display[region])
+        feature_vector[region_index] = selected_region_encoded
+        
+        # Set the year in the correct position
+        year_index = feature_order.index('Year')
+        feature_vector[year_index] = int(yearsl)  
+
+        # Perform the prediction
+        prediction = sl_cases.predict([feature_vector])
+        st.write(f"Prediction result for {region_display[region]} in {year_displaysl[yearsl]}: {prediction[0]}")
 
 run()

@@ -111,7 +111,7 @@ def run():
         year = st.selectbox("Year", year_options, format_func=lambda x: year_display[x], key="global_year")
 
     # When the button is clicked
-    if st.button("Global Prediction", key="global_button"):
+    if st.button("Global Cases Prediction", key="global_button"):
         le = LabelEncoder()
         le.fit(country_display)  # Fit the encoder on the actual country names
         selected_country_encoded = le.transform([country_display[country]])[0]
@@ -205,7 +205,7 @@ def run():
         year_optionssu = list(range(len(year_displaysu)))
         yearsu = st.selectbox("Year", year_optionssu, format_func=lambda x: year_displaysu[x], key="us_year")
 
-    if st.button("USA Prediction", key="us_button"):
+    if st.button("USA Cases Prediction", key="us_button"):
         le = LabelEncoder()
         le.fit(uregion_display) 
 
@@ -260,7 +260,7 @@ def run():
         year_optionssl = list(range(len(year_displaysl)))
         yearsl = st.selectbox("Year", year_optionssl, format_func=lambda x: year_displaysl[x], key="sl_year")
 
-    if st.button("Sri Lanka Prediction", key="sl_button"):
+    if st.button("Sri Lanka Cases Prediction", key="sl_button"):
         le = LabelEncoder()
         le.fit(region_display)  
         selected_region_encoded = le.transform([region_display[region]])[0]

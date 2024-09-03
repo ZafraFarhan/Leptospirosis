@@ -142,7 +142,7 @@ def run():
         # Perform the prediction
         prediction = world_cases.predict([feature_vector])
         rounded_prediction = round(prediction[0])
-        st.write(f"Prediction result for {country_display[country]} in {year_display[year]}: {rounded_prediction[0]}")
+        st.write(f"Prediction result for {country_display[country]} in {year_display[year]}: {rounded_prediction}")
         
 
     #################################################################################################
@@ -179,7 +179,7 @@ def run():
         # Perform the prediction
         prediction = world_deaths.predict([feature_vector])
         rounded_prediction = round(prediction[0])
-        st.write(f"Death prediction result for {country_display[country]} in {year_display[year]}: {rounded_prediction[0]}")
+        st.write(f"Death prediction result for {country_display[country]} in {year_display[year]}: {rounded_prediction}")
         
 
     #################################################################################################
@@ -237,7 +237,7 @@ def run():
         # Perform the prediction
         prediction = us_cases.predict([feature_vector])
         rounded_prediction = round(prediction[0])
-        st.write(f"Prediction result for {uregion_display[uregion]} in {year_displaysu[yearsu]}: {rounded_prediction[0]}")
+        st.write(f"Prediction result for {uregion_display[uregion]} in {year_displaysu[yearsu]}: {rounded_prediction}")
 
   
     #################################################################################################
@@ -290,6 +290,6 @@ def run():
         # Perform the prediction
         prediction = sl_cases.predict([feature_vector])
         rounded_prediction = round(prediction[0])
-        st.write(f"Prediction result for {region_display[region]} in {year_displaysl[yearsl]}: {rounded_prediction[0]}")
+        st.write(f"Prediction result for {region_display[region]} in {year_displaysl[yearsl]}: {rounded_prediction}")
 
 run()

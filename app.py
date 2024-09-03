@@ -106,7 +106,7 @@ def run():
         country = st.selectbox("Country", country_options, format_func=lambda x: country_display[x], key="global_country")
 
     with col2:
-        year_display = ('2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023')
+        year_display = tuple(str(year) for year in range(2024, 2051))
         year_options = list(range(len(year_display)))
         year = st.selectbox("Year", year_options, format_func=lambda x: year_display[x], key="global_year")
 
@@ -141,7 +141,8 @@ def run():
 
         # Perform the prediction
         prediction = world_cases.predict([feature_vector])
-        st.write(f"Prediction result for {country_display[country]} in {year_display[year]}: {prediction[0]}")
+        rounded_prediction = round(prediction[0])
+        st.write(f"Prediction result for {country_display[country]} in {year_display[year]}: {rounded_prediction[0]}")
         
 
     #################################################################################################
@@ -177,7 +178,8 @@ def run():
 
         # Perform the prediction
         prediction = world_deaths.predict([feature_vector])
-        st.write(f"Death prediction result for {country_display[country]} in {year_display[year]}: {prediction[0]}")
+        rounded_prediction = round(prediction[0])
+        st.write(f"Death prediction result for {country_display[country]} in {year_display[year]}: {rounded_prediction[0]}")
         
 
     #################################################################################################
@@ -201,7 +203,7 @@ def run():
         uregion = st.selectbox("Region", uregion_options, format_func=lambda x: uregion_display[x], key="us_region")
 
     with col2:
-        year_displaysu = ('2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023')
+        year_displaysu = tuple(str(year) for year in range(2024, 2051))
         year_optionssu = list(range(len(year_displaysu)))
         yearsu = st.selectbox("Year", year_optionssu, format_func=lambda x: year_displaysu[x], key="us_year")
 
@@ -234,7 +236,8 @@ def run():
 
         # Perform the prediction
         prediction = us_cases.predict([feature_vector])
-        st.write(f"Prediction result for {uregion_display[uregion]} in {year_displaysu[yearsu]}: {prediction[0]}")
+        rounded_prediction = round(prediction[0])
+        st.write(f"Prediction result for {uregion_display[uregion]} in {year_displaysu[yearsu]}: {rounded_prediction[0]}")
 
   
     #################################################################################################
@@ -256,7 +259,7 @@ def run():
         region = st.selectbox("Region", region_options, format_func=lambda x: region_display[x], key="sl_region")
 
     with col2:
-        year_displaysl = ('2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023')
+        year_displaysl = tuple(str(year) for year in range(2024, 2051))
         year_optionssl = list(range(len(year_displaysl)))
         yearsl = st.selectbox("Year", year_optionssl, format_func=lambda x: year_displaysl[x], key="sl_year")
 
@@ -286,6 +289,7 @@ def run():
 
         # Perform the prediction
         prediction = sl_cases.predict([feature_vector])
-        st.write(f"Prediction result for {region_display[region]} in {year_displaysl[yearsl]}: {prediction[0]}")
+        rounded_prediction = round(prediction[0])
+        st.write(f"Prediction result for {region_display[region]} in {year_displaysl[yearsl]}: {rounded_prediction[0]}")
 
 run()
